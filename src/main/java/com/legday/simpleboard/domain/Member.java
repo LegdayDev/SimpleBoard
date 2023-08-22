@@ -1,5 +1,6 @@
 package com.legday.simpleboard.domain;
 
+import com.legday.simpleboard.dto.MemberUpdateDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,4 +27,8 @@ public class Member {
 
     private LocalDateTime createdAt;
 
+    public void updateMember(MemberUpdateDto memberUpdateDto){
+        this.username =memberUpdateDto.getUsername();
+        this.password = memberUpdateDto.getPassword();
+    }
 }
