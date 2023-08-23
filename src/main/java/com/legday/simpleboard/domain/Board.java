@@ -27,5 +27,6 @@ public class Board {
     public void updateToBoard(UpdateBoardDto updateDto){
         this.title = updateDto.getTitle();
         this.content = updateDto.getContent();
+        this.createdAt = updateDto.getUpdateAt();
     }
 }
