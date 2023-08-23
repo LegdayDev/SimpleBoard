@@ -17,7 +17,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public int join(Board board){
+    public int write(Board board){
         boardRepository.save(board);
         return board.getId();
     }
