@@ -91,4 +91,23 @@ class MemberServiceTest {
         //then
         assertThat(member.getUsername()).isEqualTo("Cristiano");
     }
+
+    @Test
+    void 회원탈퇴(){
+        //given
+        Member member = new Member();
+        member.setUsername("Ronaldo");
+        member.setPassword("cr7");
+
+        int memberId = memberService.join(member);
+
+        //when
+        memberService.delete(member);
+
+        //then
+        List<Member> members = memberService.findAll();
+
+        assertThat(members.size()).isEqualTo(0);
+
+    }
 }
