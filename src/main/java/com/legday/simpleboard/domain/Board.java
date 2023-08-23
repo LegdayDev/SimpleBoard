@@ -1,5 +1,7 @@
 package com.legday.simpleboard.domain;
 
+import com.legday.simpleboard.dto.UpdateBoardDto;
+import com.legday.simpleboard.dto.WriteDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,4 +24,9 @@ public class Board {
     private Member member;
 
     private LocalDateTime createdAt;
+
+    public void updateToBoard(UpdateBoardDto updateDto){
+        this.title = updateDto.getTitle();
+        this.content = updateDto.getContent();
+    }
 }
