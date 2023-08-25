@@ -1,7 +1,7 @@
 package com.legday.simpleboard.service;
 
 import com.legday.simpleboard.domain.Member;
-import com.legday.simpleboard.dto.MemberUpdateDto;
+import com.legday.simpleboard.dto.req.MemberUpdateDto;
 import com.legday.simpleboard.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

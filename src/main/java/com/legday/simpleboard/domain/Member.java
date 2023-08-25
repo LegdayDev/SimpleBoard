@@ -1,6 +1,8 @@
 package com.legday.simpleboard.domain;
 
-import com.legday.simpleboard.dto.MemberUpdateDto;
+import com.legday.simpleboard.dto.req.CreateMemberRequest;
+import com.legday.simpleboard.dto.req.MemberUpdateDto;
+import com.legday.simpleboard.web.api.MemberApiController;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,5 +32,11 @@ public class Member {
     public void updateMember(MemberUpdateDto memberUpdateDto){
         this.username =memberUpdateDto.getUsername();
         this.password = memberUpdateDto.getPassword();
+    }
+
+    public void createMember(CreateMemberRequest request) {
+        this.username = request.getUsername();
+        this.password = request.getPassword();
+        this.email = request.getEmail();
     }
 }

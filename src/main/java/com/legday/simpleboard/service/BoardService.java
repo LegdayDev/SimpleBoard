@@ -1,7 +1,7 @@
 package com.legday.simpleboard.service;
 
 import com.legday.simpleboard.domain.Board;
-import com.legday.simpleboard.dto.UpdateBoardDto;
+import com.legday.simpleboard.dto.req.UpdateBoardDto;
 import com.legday.simpleboard.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

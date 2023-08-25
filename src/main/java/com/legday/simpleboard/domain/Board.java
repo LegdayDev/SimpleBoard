@@ -1,6 +1,6 @@
 package com.legday.simpleboard.domain;
 
-import com.legday.simpleboard.dto.UpdateBoardDto;
+import com.legday.simpleboard.dto.req.UpdateBoardDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

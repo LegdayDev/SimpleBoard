@@ -1,21 +1,17 @@
 package com.legday.simpleboard.service;
 
 import com.legday.simpleboard.domain.Member;
-import com.legday.simpleboard.dto.MemberUpdateDto;
-import com.legday.simpleboard.repository.MemberRepository;
-import org.assertj.core.api.Assertions;
+import com.legday.simpleboard.dto.req.MemberUpdateDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest

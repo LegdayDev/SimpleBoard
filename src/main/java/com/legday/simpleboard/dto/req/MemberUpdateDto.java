@@ -1,4 +1,4 @@
-package com.legday.simpleboard.dto;
+package com.legday.simpleboard.dto.req;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
