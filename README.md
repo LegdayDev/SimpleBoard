@@ -19,15 +19,15 @@
   - H2 Database(1.4.199)
   - Postman
 
-### 구현기능 ( 1단계 버전 -> 추후에 늘릴 예정)
+### 구현기능 
+- 기본적인 CRUD 기반으로 등록,수정,삭제,조회 기능만 구현(클린코드)
 1. 회원 엔티티 CRUD -> 완료
 2. 게시판 엔티티 CRUD -> 완료
-3. API 문서 만들기
-4. Bootstrap 을 이용해 간단한 VIEW 구현
-5. HTML 파일을 Thymeleaf 탬플릿엔진으로 변환 후 MVC 패턴으로 구현
-6. 예외처리 구현
+3. Restful API 통신 -> 작업중
+4. 예외처리 구현
+5. API 문서 만들기(OpenAPI Swagger)
 
 ### 목표
-1. Postman 으로 API 통신우선
-2. 간단한 템플릿 뷰를 이용하여 View 구현
-3. 예외처리 기능 추가
+1. API Controller 구현하여 통신
+2. 예외처리 기능 추가
+3. API 문서 만들어보기
