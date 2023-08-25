@@ -38,5 +38,6 @@ public class Member {
         this.username = request.getUsername();
         this.password = request.getPassword();
         this.email = request.getEmail();
+        this.createdAt = request.getCreateAt();
     }
 }
