@@ -30,11 +30,13 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    @Transactional
     public void update(int boardId, UpdateBoardDto boardDto){
         Board findBoard = boardRepository.findById(boardId);
         findBoard.updateToBoard(boardDto);
     }
 
+    @Transactional
     public void delete(int boardId){
         Board findBoard = boardRepository.findById(boardId);
         boardRepository.delete(findBoard);

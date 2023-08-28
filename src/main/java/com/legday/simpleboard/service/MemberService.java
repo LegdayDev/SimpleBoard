@@ -30,11 +30,13 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    @Transactional
     public void update(int memberId, MemberUpdateDto memberUpdateDto){
         Member findMember = memberRepository.findById(memberId);
         findMember.updateMember(memberUpdateDto);
     }
 
+    @Transactional
     public void delete(Member member){
         memberRepository.delete(member);
     }

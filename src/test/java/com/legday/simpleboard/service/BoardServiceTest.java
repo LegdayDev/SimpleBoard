@@ -88,8 +88,14 @@ class BoardServiceTest {
         board.setCreatedAt(LocalDateTime.now());
         int boardId = boardService.write(board);
 
+
+        UpdateBoardDto updateBoardDto = new UpdateBoardDto();
+        updateBoardDto.setTitle("Cristiano Ronaldo");
+        updateBoardDto.setContent("Ronaldo World Class King");
+        updateBoardDto.setUpdateAt(LocalDateTime.now());
+
         //when
-        boardService.update(boardId,new UpdateBoardDto("Cristiano Ronaldo","Ronaldo World Class King",LocalDateTime.now()));
+        boardService.update(boardId,updateBoardDto);
 
         Board findBoard = boardService.findById(boardId);
 

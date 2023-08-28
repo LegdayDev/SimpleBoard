@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Getter @Setter
 public class UpdateBoardDto {
     private String title;

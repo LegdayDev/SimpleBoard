@@ -81,8 +81,12 @@ class MemberServiceTest {
 
         int memberId = memberService.join(member);
 
+        MemberUpdateDto memberUpdateDto = new MemberUpdateDto();
+        memberUpdateDto.setUsername("Cristiano");
+        memberUpdateDto.setPassword("Siuuuu");
+
         //when
-        memberService.update(memberId, new MemberUpdateDto("Cristiano","Siuuuu"));
+        memberService.update(memberId, memberUpdateDto);
 
         //then
         assertThat(member.getUsername()).isEqualTo("Cristiano");
