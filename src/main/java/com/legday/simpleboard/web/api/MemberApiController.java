@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -60,6 +62,21 @@ public class MemberApiController {
         MemberListDto memberDto = new MemberListDto(findMember.getUsername(), findMember.getEmail(), findMember.getCreatedAt());
 
         return new RespDto<MemberListDto>(OK,"회원 한건 조회 성공", memberDto);
+
+    }
+
+    /**
+     * 회원전체 조회 API
+     * username, email, createdAt 만 보여준다.
+     */
+    @GetMapping("/api/members")
+    public RespDto<List> findAll(){
+        List<Member> members = memberService.findAll();
+
+        List<MemberListDto> collect = members.stream()
+                .map(m -> new MemberListDto(m.getUsername(), m.getEmail(), m.getCreatedAt()))
+                .collect(Collectors.toList());
+        return new RespDto<List>(OK,"회원전체 조회 성공",collect);
 
     }
 
