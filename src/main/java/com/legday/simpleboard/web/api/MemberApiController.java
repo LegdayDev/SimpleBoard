@@ -3,6 +3,7 @@ package com.legday.simpleboard.web.api;
 import com.legday.simpleboard.domain.Member;
 import com.legday.simpleboard.dto.req.CreateMemberRequest;
 import com.legday.simpleboard.dto.req.MemberUpdateDto;
+import com.legday.simpleboard.dto.res.MemberListDto;
 import com.legday.simpleboard.dto.res.MemberUpdateResp;
 import com.legday.simpleboard.dto.res.RespDto;
 import com.legday.simpleboard.service.MemberService;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,9 +31,10 @@ public class MemberApiController {
         member.setUsername(request.getUsername());
         member.setPassword(request.getPassword());
         member.setEmail(request.getEmail());
+        member.setCreatedAt(request.getCreateAt());
 
         int memberId = memberService.join(member);
-        return new RespDto<CreateMemberRequest>(HttpStatus.OK,"성공",request);
+        return new RespDto<CreateMemberRequest>(OK,"성공",request);
 
     }
     /**
@@ -42,7 +46,21 @@ public class MemberApiController {
     public RespDto<MemberUpdateResp> updateMember(@PathVariable int memberId, @RequestBody MemberUpdateDto request){
         memberService.update(memberId,request);
 
-        return new RespDto<MemberUpdateResp>(HttpStatus.OK,"회원수정 성공",new MemberUpdateResp(memberId,request.getUsername()));
+        return new RespDto<MemberUpdateResp>(OK,"회원수정 성공",new MemberUpdateResp(memberId,request.getUsername()));
+    }
+
+    /**
+     * 회원단건 조회 API
+     * username, email, createdAt 만 보여준다.
+     */
+    @GetMapping("/api/members/{memberId}")
+    public RespDto<MemberListDto> findOne(@PathVariable int memberId){
+        Member findMember = memberService.findById(memberId);
+
+        MemberListDto memberDto = new MemberListDto(findMember.getUsername(), findMember.getEmail(), findMember.getCreatedAt());
+
+        return new RespDto<MemberListDto>(OK,"회원 한건 조회 성공", memberDto);
+
     }
 
 }
