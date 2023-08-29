@@ -80,5 +80,17 @@ public class MemberApiController {
 
     }
 
+    /**
+     * 회원삭제 API
+     * ID를 받아 해당 Member를 삭제
+     */
+    @DeleteMapping("/api/members/{memberId}")
+    public RespDto<Integer> delete(@PathVariable int memberId){
+        Member findMember = memberService.findById(memberId);
+        memberService.delete(findMember);
+
+        return new RespDto<>(OK,"회원삭제 성공",memberId);
+    }
+
 }
 
