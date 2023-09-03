@@ -29,6 +29,11 @@ public class Member {
 
     private LocalDateTime createdAt;
 
+    @PrePersist
+    public void createAt(){
+        this.createdAt = LocalDateTime.now();
+    }
+
     public void updateMember(MemberUpdateDto memberUpdateDto){
         this.username =memberUpdateDto.getUsername();
         this.password = memberUpdateDto.getPassword();

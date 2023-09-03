@@ -24,6 +24,11 @@ public class Board {
 
     private LocalDateTime createdAt;
 
+    @PrePersist
+    public void createAt(){
+        this.createdAt = LocalDateTime.now();
+    }
+
     public void updateToBoard(UpdateBoardDto updateDto){
         this.title = updateDto.getTitle();
         this.content = updateDto.getContent();
