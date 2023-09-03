@@ -1,5 +1,6 @@
 package com.legday.simpleboard.domain;
 
+import com.legday.simpleboard.dto.req.CreateBoardDto;
 import com.legday.simpleboard.dto.req.UpdateBoardDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,14 @@ public class Board {
         this.createdAt = LocalDateTime.now();
     }
 
-    public void updateToBoard(UpdateBoardDto updateDto){
+    public void updateToBoard(UpdateBoardDto updateDto) {
         this.title = updateDto.getTitle();
         this.content = updateDto.getContent();
         this.createdAt = updateDto.getUpdateAt();
+    }
+    public void createToBoard(CreateBoardDto createBoardDto){
+        this.title = createBoardDto.getTitle();
+        this.content = createBoardDto.getContent();
+        // 추후에 로그인 기능 구현후 memberId 를 가져오자.
     }
 }

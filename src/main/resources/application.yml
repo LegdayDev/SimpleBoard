@@ -6,8 +6,10 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
-      ddl-auto: create
-    properties:
+      hbm2ddl:
+        auto:update
+#      ddl-auto: update
+    pro-perties:
       hibernate:
         format_sql: true
 #        show_sql: true
