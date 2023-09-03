@@ -32,7 +32,7 @@ public class BoardApiController {
         board.createToBoard(createBoardDto);
         int boardId = boardService.write(board);
 
-        return new RespDto<BoardRespDto>(HttpStatus.OK,"성공",new BoardRespDto(boardId, createBoardDto.getTitle(), createBoardDto.getContent()));
+        return new RespDto<BoardRespDto>(HttpStatus.OK,"글 등록성공",new BoardRespDto(boardId, createBoardDto.getTitle(), createBoardDto.getContent()));
     }
 
     /**
@@ -43,7 +43,7 @@ public class BoardApiController {
     public RespDto<?> findById(@PathVariable int boardId){
         Board findBoard = boardService.findById(boardId);
 
-        return new RespDto<BoardRespDto>(HttpStatus.OK,"성공",new BoardRespDto(boardId, findBoard.getTitle(), findBoard.getContent()));
+        return new RespDto<BoardRespDto>(HttpStatus.OK,"글 조회성공",new BoardRespDto(boardId, findBoard.getTitle(), findBoard.getContent()));
     }
 
     /**
@@ -57,6 +57,16 @@ public class BoardApiController {
                 .map(m -> new BoardRespDto(m.getId(), m.getTitle(), m.getContent()))
                 .collect(Collectors.toList());
 
-        return new RespDto<>(HttpStatus.OK,"OK",collect);
+        return new RespDto<>(HttpStatus.OK,"조회성공",collect);
+    }
+
+    /**
+     * Board 삭제
+     * boardId 를 받아서 board 객체를 찾아 삭제
+     */
+    @DeleteMapping("/api/board/{boardId}")
+    public RespDto<?> delete(@PathVariable int boardId){
+        boardService.delete(boardId);
+        return new RespDto<>(HttpStatus.OK,"삭제성공",null);
     }
 }
