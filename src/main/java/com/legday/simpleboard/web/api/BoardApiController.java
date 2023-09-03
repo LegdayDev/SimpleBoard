@@ -2,6 +2,7 @@ package com.legday.simpleboard.web.api;
 
 import com.legday.simpleboard.domain.Board;
 import com.legday.simpleboard.dto.req.CreateBoardDto;
+import com.legday.simpleboard.dto.req.UpdateBoardDto;
 import com.legday.simpleboard.dto.res.BoardRespDto;
 import com.legday.simpleboard.dto.res.RespDto;
 import com.legday.simpleboard.service.BoardService;
@@ -58,6 +59,17 @@ public class BoardApiController {
                 .collect(Collectors.toList());
 
         return new RespDto<>(HttpStatus.OK,"조회성공",collect);
+    }
+
+    /**
+     * Board 수정
+     * 변경할 boardID와 새로운 title , content 를 DTO 로 받아서 수정한다.
+     */
+    @PatchMapping("/api/board/{boardId}")
+    public RespDto<?> update(@PathVariable int boardId, @RequestBody UpdateBoardDto updateBoardDto){
+        boardService.update(boardId,updateBoardDto);
+
+        return new RespDto<BoardRespDto>(HttpStatus.OK,"글 수정 성공", new BoardRespDto(boardId, updateBoardDto.getTitle(), updateBoardDto.getContent()));
     }
 
     /**
