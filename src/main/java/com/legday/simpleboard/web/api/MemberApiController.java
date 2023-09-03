@@ -30,11 +30,7 @@ public class MemberApiController {
     @PostMapping("/api/members")
     public RespDto<CreateMemberRequest> createMember(@RequestBody CreateMemberRequest request){
         Member member = new Member();
-        member.setUsername(request.getUsername());
-        member.setPassword(request.getPassword());
-        member.setEmail(request.getEmail());
-        member.setCreatedAt(request.getCreateAt());
-
+        member.createMember(request);
         int memberId = memberService.join(member);
         return new RespDto<CreateMemberRequest>(OK,"성공",request);
 
