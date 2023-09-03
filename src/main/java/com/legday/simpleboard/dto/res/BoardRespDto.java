@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @AllArgsConstructor
 @Getter @Setter
-public class CreateBoardRes {
+public class BoardRespDto {
     private int boardId;
     private String title;
     private String content;
