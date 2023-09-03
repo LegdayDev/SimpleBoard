@@ -6,9 +6,13 @@ import com.legday.simpleboard.dto.res.BoardRespDto;
 import com.legday.simpleboard.dto.res.RespDto;
 import com.legday.simpleboard.service.BoardService;
 import com.legday.simpleboard.service.MemberService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -40,5 +44,19 @@ public class BoardApiController {
         Board findBoard = boardService.findById(boardId);
 
         return new RespDto<BoardRespDto>(HttpStatus.OK,"성공",new BoardRespDto(boardId, findBoard.getTitle(), findBoard.getContent()));
+    }
+
+    /**
+     * Board 전체 조회
+     * Board 의 리스트를 RespDto<> 에 담아야함.
+     */
+    @GetMapping("/api/boards")
+    public RespDto<List> findAll(){
+        List<Board> boards = boardService.findAll();
+        List<BoardRespDto> collect = boards.stream()
+                .map(m -> new BoardRespDto(m.getId(), m.getTitle(), m.getContent()))
+                .collect(Collectors.toList());
+
+        return new RespDto<>(HttpStatus.OK,"OK",collect);
     }
 }
