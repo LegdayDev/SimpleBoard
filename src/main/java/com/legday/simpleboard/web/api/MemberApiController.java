@@ -82,10 +82,9 @@ public class MemberApiController {
      */
     @DeleteMapping("/api/members/{memberId}")
     public RespDto<Integer> delete(@PathVariable int memberId){
-        Member findMember = memberService.findById(memberId);
-        memberService.delete(findMember);
+        memberService.delete(memberId);
 
-        return new RespDto<>(OK,"회원삭제 성공",memberId);
+        return new RespDto<>(OK,"회원삭제 성공",null);
     }
 
 }

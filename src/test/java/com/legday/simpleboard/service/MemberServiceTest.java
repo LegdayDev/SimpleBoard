@@ -102,7 +102,7 @@ class MemberServiceTest {
         int memberId = memberService.join(member);
 
         //when
-        memberService.delete(member);
+        memberService.delete(memberId);
 
         //then
         List<Member> members = memberService.findAll();

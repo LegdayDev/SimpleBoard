@@ -37,7 +37,7 @@ public class MemberService {
     }
 
     @Transactional
-    public void delete(Member member){
-        memberRepository.delete(member);
+    public void delete(int memberId){
+        memberRepository.delete(memberRepository.findById(memberId));
     }
 }
